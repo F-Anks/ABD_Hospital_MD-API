@@ -1,4 +1,13 @@
-from fastapi import APIRouter, HTTPException
+"""
+=============================================================================
+Nombre del archivo: poblacion.py
+Descripción del archivo: Define los endpoints RESTful (/api/poblar, /api/eliminar) para invocar los stored procedures que manipulan los datos de los pacientes.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+"""
+from fastapi import APIRouter, HTTPException, Request
 from config.db import get_db_connection, crear_sp_desde_archivo
 from schemas.poblacion import EliminarResponse, PoblarRequest, PoblarResponse
 from mysql.connector import Error
@@ -16,17 +25,18 @@ router = APIRouter(
     description="Lee y ejecuta db/sp_limpiar_tablas_pacientes.sql para hacer TRUNCATE "
                 "de tbb_pacientes, tbb_personas_fisicas y tbb_personas."
 )
-def eliminar_datos():
+def eliminar_datos(request: Request):
     connection = None
     try:
         connection = get_db_connection()
+        client_ip = request.client.host if request.client else 'Desconocido'
 
         # Crear SP desde el archivo .sql
         sp_name = crear_sp_desde_archivo(connection, "sp_limpiar_tablas_pacientes.sql")
 
-        # Llamar al SP
+        # Llamar al SP pasando la IP del cliente
         cursor = connection.cursor()
-        cursor.callproc(sp_name)
+        cursor.callproc(sp_name, [client_ip])
         connection.commit()
         cursor.close()
 
@@ -48,10 +58,11 @@ def eliminar_datos():
     summary="Poblar Datos (Múltiples escenarios)",
     description="Inserta pacientes. Puedes elegir género y rango de edad para las 10 pruebas."
 )
-def ejecutar_poblacion(request: PoblarRequest):
+def ejecutar_poblacion(request: PoblarRequest, http_request: Request):
     connection = None
     try:
         connection = get_db_connection()
+        client_ip = http_request.client.host if http_request.client else 'Desconocido'
 
         # Crear/Actualizar SP desde el archivo .sql
         sp_name = crear_sp_desde_archivo(connection, "sp_poblar_datos.sql")
@@ -64,7 +75,8 @@ def ejecutar_poblacion(request: PoblarRequest):
             request.edad_min,
             request.edad_max,
             request.status_vida,
-            request.condicion
+            request.condicion,
+            client_ip
         ])
         
         # Obtener el resultado

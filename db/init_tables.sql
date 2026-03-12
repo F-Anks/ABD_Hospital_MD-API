@@ -1,3 +1,12 @@
+/*
+=============================================================================
+Nombre del archivo: init_tables.sql
+Descripción del archivo: Script SQL para la creación condicional de las tablas necesarias (tbb_personas, tbb_personas_fisicas y tbb_pacientes) y sus relaciones de FKs.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+*/
 -- Script para crear las tablas si no existen, basado en la estructura original
 -- Equipo : SICPES - Servicios Medicos (md_user)
 
@@ -42,4 +51,14 @@ CREATE TABLE IF NOT EXISTS `tbb_pacientes` (
   `estatus` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`ID`),
   CONSTRAINT `fk_pacientes_personas_fisicas` FOREIGN KEY (`ID`) REFERENCES `tbb_personas_fisicas` (`ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS `tbi_bitacora` (
+  `ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `Nombre_Tabla` varchar(100) NOT NULL,
+  `Usuario` varchar(100) NOT NULL,
+  `Operacion` enum('Insert','Update','Delete') NOT NULL,
+  `Descripcion` text DEFAULT NULL,
+  `Fecha_Hora` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

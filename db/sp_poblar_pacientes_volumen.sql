@@ -1,3 +1,12 @@
+/*
+=============================================================================
+Nombre del archivo: sp_poblar_pacientes_volumen.sql
+Descripción del archivo: Stored Procedure alternativo para inyección masiva de casos con parámetros genéricos, utilizado en versiones tempranas del proyecto.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+*/
 -- Equipo : SICPES - Servicios Medicos (md_user)
 -- Procedimiento almacenado para poblar las tablas: tbb_personas, tbb_personas_fisicas, tbb_pacientes
 -- Base de datos: hospital_230758

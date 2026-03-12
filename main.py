@@ -1,3 +1,12 @@
+"""
+=============================================================================
+Nombre del archivo: main.py
+Descripción del archivo: Punto de entrada principal de la aplicación FastAPI. Configura la inicialización de la BD, CORS y enlaza las rutas del API.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.poblacion import router as poblacion_router

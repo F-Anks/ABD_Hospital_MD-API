@@ -1,3 +1,12 @@
+"""
+=============================================================================
+Nombre del archivo: db.py
+Descripción del archivo: Módulo para la conexión y gestión de la base de datos MySQL. Contiene funciones para leer ejecutar archivos .sql de forma programática.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+"""
 import os
 from dotenv import load_dotenv
 import mysql.connector
@@ -75,13 +84,17 @@ def inicializar_base_datos():
         connection = get_db_connection()
         cursor = connection.cursor()
         
+        # Crear tablas
         filepath = os.path.join(DB_SQL_PATH, "init_tables.sql")
         with open(filepath, "r", encoding="utf-8") as f:
             sql_script = f.read()
             
         # Quitar líneas de comentarios completas para que no rompan el parser
         lineas = [l for l in sql_script.split('\n') if not l.strip().startswith('--')]
+        # Quitar bloques de comentarios /* ... */
+        import re
         script_limpio = '\n'.join(lineas)
+        script_limpio = re.sub(r'/\*.*?\*/', '', script_limpio, flags=re.DOTALL)
         
         # Ejecutar cada statement separado por ';'
         for statement in script_limpio.split(';'):
@@ -91,6 +104,12 @@ def inicializar_base_datos():
                 
         connection.commit()
         print("Base de datos inicializada: tablas verificadas/creadas correctamente.")
+
+        # Limpiar triggers residuales si existieran de versiones anteriores
+        for trg in ['trg_pacientes_after_insert', 'trg_pacientes_after_update', 'trg_pacientes_after_delete']:
+            cursor.execute(f"DROP TRIGGER IF EXISTS {trg}")
+        connection.commit()
+
     except Exception as e:
         print(f"Error al inicializar la BD: {e}")
     finally:
