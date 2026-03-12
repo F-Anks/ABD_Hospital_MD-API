@@ -22,8 +22,12 @@ DB_CONFIG = {
     "port": int(os.getenv("DB_PORT", 3306)),
 }
 
-# Ruta a la carpeta db/
+# Rutas a las subcarpetas de db/
 DB_SQL_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "db")
+DB_BACKUPS_PATH = os.path.join(DB_SQL_PATH, "backups")
+DB_SP_PATH = os.path.join(DB_SQL_PATH, "routines", "stored procedures")
+DB_FN_PATH = os.path.join(DB_SQL_PATH, "routines", "functions")
+DB_TRIGGERS_PATH = os.path.join(DB_SQL_PATH, "triggers")
 
 
 def get_db_connection():
@@ -35,9 +39,10 @@ def get_db_connection():
         raise e
 
 
-def ejecutar_sql_file(connection, filename):
-    """Lee un archivo .sql de la carpeta db/ y lo ejecuta en MySQL."""
-    filepath = os.path.join(DB_SQL_PATH, filename)
+def ejecutar_sql_file(connection, filename, carpeta=None):
+    """Lee un archivo .sql de la carpeta indicada y lo ejecuta en MySQL."""
+    base = carpeta if carpeta else DB_SP_PATH
+    filepath = os.path.join(base, filename)
     with open(filepath, "r", encoding="utf-8") as f:
         contenido = f.read()
 
@@ -54,8 +59,8 @@ def ejecutar_sql_file(connection, filename):
 
 
 def crear_sp_desde_archivo(connection, filename):
-    """Lee el archivo .sql, dropea el SP si existe y lo crea de nuevo."""
-    sql = ejecutar_sql_file(connection, filename)
+    """Lee el archivo .sql de db/routines/stored procedures/, dropea el SP si existe y lo crea de nuevo."""
+    sql = ejecutar_sql_file(connection, filename, DB_SP_PATH)
     cursor = connection.cursor()
 
     # Extraer nombre del SP del CREATE PROCEDURE
@@ -84,8 +89,8 @@ def inicializar_base_datos():
         connection = get_db_connection()
         cursor = connection.cursor()
         
-        # Crear tablas
-        filepath = os.path.join(DB_SQL_PATH, "init_tables.sql")
+        # Crear tablas desde db/backups/init_tables.sql
+        filepath = os.path.join(DB_BACKUPS_PATH, "init_tables.sql")
         with open(filepath, "r", encoding="utf-8") as f:
             sql_script = f.read()
             
