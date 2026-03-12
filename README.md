@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md (Raíz)
 - **Descripción del archivo:** Documentación general del proyecto FastAPI y Stored Procedures para población volumétrica de datos biográficos y médicos.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** 
+- **Adaptado por:*Angel de Jesus Baños Telles* 
 - **Supervisado por:** 
 =============================================================================
 
