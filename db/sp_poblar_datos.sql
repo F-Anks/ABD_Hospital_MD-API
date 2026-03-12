@@ -1,3 +1,12 @@
+/*
+=============================================================================
+Nombre del archivo: sp_poblar_datos.sql
+Descripción del archivo: Stored Procedure inteligente para poblar grandes volúmenes de datos con reglas de negocio médicas y demográficas dinámicas (10 pruebas principales).
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+*/
 -- =========================================================================
 -- PRUEBA 1: Ingreso de 100K Pacientes (Población General y Casos Especiales)
 -- =========================================================================
@@ -10,7 +19,8 @@ CREATE PROCEDURE sp_poblar_pacientes(
     IN p_edad_min INT,
     IN p_edad_max INT,
     IN p_status_vida_fixed VARCHAR(20),
-    IN p_condicion VARCHAR(50)
+    IN p_condicion VARCHAR(50),
+    IN p_usuario_ip VARCHAR(100)
 )
 BEGIN
     DECLARE i INT DEFAULT 0;
@@ -306,6 +316,20 @@ BEGIN
 
         SET i = i + 1;
     END WHILE;
+
+    -- Registrar UNA sola entrada en bitacora por toda la operación masiva
+    INSERT INTO tbi_bitacora (Nombre_Tabla, Usuario, Operacion, Descripcion, Fecha_Hora)
+    VALUES (
+        'tbb_pacientes',
+        p_usuario_ip,
+        'Insert',
+        CONCAT('Se han insertado ', p_cantidad, ' pacientes.',
+               ' Genero: ', IFNULL(p_genero_fixed, 'Aleatorio'),
+               ', Edad: ', IFNULL(p_edad_min, 'Auto'), '-', IFNULL(p_edad_max, 'Auto'),
+               ', Condicion: ', IFNULL(p_condicion, 'Ninguna'),
+               ', Status Vida: ', IFNULL(p_status_vida_fixed, 'Aleatorio')),
+        NOW()
+    );
 
     SELECT CONCAT('Inserción finalizada: ', p_cantidad, ' registros procesados.') AS Resultado;
 

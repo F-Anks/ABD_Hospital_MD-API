@@ -1,3 +1,12 @@
+"""
+=============================================================================
+Nombre del archivo: poblacion.py
+Descripción del archivo: Modelos de Pydantic que definen la estructura y validación de los datos entrantes (Request) y salientes (Response) de la API.
+Creado por: Agente AI Antigravity
+Adaptado por: 
+Supervisado por: 
+=============================================================================
+"""
 from pydantic import BaseModel, Field
 
 
