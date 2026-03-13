@@ -5,7 +5,8 @@ API para la gestión y análisis de datos médicos hospitalarios.
 Este servicio permite consultar y procesar información relacionada con pacientes, incluyendo distribución demográfica, estado clínico y métricas relevantes para análisis hospitalario.
 
 El objetivo es centralizar los datos para su consumo por aplicaciones frontend, dashboards analíticos y sistemas de gestión hospitalaria.
-
+### DASHBOARD CON DATOS DEL API
+![Dashboard](/test/Dashboard_Api.jpeg)
 ---
 
 # 📊 Características del sistema
@@ -108,5 +109,9 @@ Segmentación de pacientes en rangos como:
 - Adulto mayor
 
 ---
+# PRUEBAS
 
-# ⚙️ Arquitectura del proyecto
+---
+### DASHBOARD PREVIO A ACTUALIZACION DEL API
+
+![Dashboard](/test/Dashboard_old.jpeg)
