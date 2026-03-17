@@ -11,6 +11,7 @@ from fastapi import APIRouter, HTTPException, Request
 from config.db import get_db_connection, crear_sp_desde_archivo
 from schemas.poblacion import EliminarResponse, PoblarRequest, PoblarResponse
 from mysql.connector import Error
+from datetime import datetime
 
 router = APIRouter(
     prefix="/api",
@@ -89,7 +90,11 @@ def ejecutar_poblacion(request: PoblarRequest, http_request: Request):
         connection.commit()
         cursor.close()
 
-        return PoblarResponse(mensaje=mensaje)
+        return PoblarResponse(
+            mensaje=mensaje,
+            ip=client_ip,
+            fecha_hora=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        )
     except Error as e:
         raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
