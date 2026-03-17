@@ -3,6 +3,7 @@
 Este documento detalla las pruebas de inyección masiva de datos realizadas para validar la robustez y capacidad de respuesta de la API y la base de datos.
 
 ## Resumen de Ejecución
+
 Se realizaron **10 pruebas** consecutivas con diferentes parámetros de volumen, género, edad y condiciones médicas.
 
 - **Contador Inicial:** 0 registros.
@@ -11,16 +12,18 @@ Se realizaron **10 pruebas** consecutivas con diferentes parámetros de volumen,
 ---
 
 ## Estado Inicial del Sistema
+
 Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvieran vacías para asegurar la limpieza de los datos de prueba.
 
 ![Contador Inicial](media/image.png)
-*Figura 1: Contador en 0 antes de iniciar las pruebas.*
+_Figura 1: Contador en 0 antes de iniciar las pruebas._
 
 ---
 
 ## Detalle de las 10 Pruebas
 
 ### Prueba 1: Inyección Masiva Base
+
 - **Cantidad:** 100,000 registros
 - **Filtros:** Ninguno (aleatorio)
 - **Objetivo:** Validar la capacidad de inserción masiva en una sola transacción.
@@ -28,6 +31,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 1](media/image%20copy.png)
 
 ### Prueba 2: Segmento Femenino Adulto
+
 - **Cantidad:** 5,000 registros
 - **Género:** Mujer
 - **Rango de Edad:** 20 - 50 años
@@ -36,6 +40,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 2](media/image%20copy%202.png)
 
 ### Prueba 3: Pacientes Discapacitados
+
 - **Cantidad:** 300 registros
 - **Género:** Hombre
 - **Condición:** Discapacitado
@@ -44,6 +49,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 3](media/image%20copy%203.png)
 
 ### Prueba 4: Pacientes Neonatos
+
 - **Cantidad:** 1,500 registros
 - **Rango de Edad:** 0 - 0 años
 - **Objetivo:** Generar registros de recién nacidos para pruebas de pediatría.
@@ -51,6 +57,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 4](media/image%20copy%204.png)
 
 ### Prueba 5: Casos de Fallecimiento
+
 - **Cantidad:** 325 registros
 - **Estatus Vida:** Finado
 - **Objetivo:** Validar la lógica de estados de vida en la base de datos.
@@ -58,6 +65,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 5](media/image%20copy%205.png)
 
 ### Prueba 6: Segmento Diabético
+
 - **Cantidad:** 832 registros
 - **Rango de Edad:** 5 - 22 años
 - **Condición:** Diabético
@@ -66,6 +74,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 6](media/image%20copy%206.png)
 
 ### Prueba 7: Segmento Pediátrico Masculino
+
 - **Cantidad:** 625 registros
 - **Género:** Hombre
 - **Rango de Edad:** 1 - 14 años
@@ -75,6 +84,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 7](media/image%20copy%207.png)
 
 ### Prueba 8: Casos de Coma
+
 - **Cantidad:** 111 registros
 - **Estatus Vida:** Coma
 - **Objetivo:** Probar estados críticos de salud.
@@ -82,6 +92,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 8](media/image%20copy%208.png)
 
 ### Prueba 9: Diversidad de Género (N/B)
+
 - **Cantidad:** 23,000 registros
 - **Género:** N/B
 - **Objetivo:** Validar la inclusión de identidades no binarias en el sistema.
@@ -89,6 +100,7 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 ![Prueba 9](media/image%20copy%209.png)
 
 ### Prueba 10: Contingencia COVID
+
 - **Cantidad:** 3,416 registros
 - **Condición:** COVID
 - **Objetivo:** Simular carga de datos durante una emergencia sanitaria.
@@ -97,8 +109,21 @@ Antes de comenzar las pruebas, se verificó que las tablas de pacientes estuvier
 
 ---
 
+### EXTRA: Uso de Cors en el API
+
+Se implemento cors en el API para permitir utilizar el API en diferentes dispositivos conectados a la misma red.
+
+![Cors](media/image%20copy%2012.png)
+
+## respuesta del API en swagge con los datos de la ip
+
+![swagger](media/image%20copy%2013.png) 
+
+
+
 ## Resultado Final de las Pruebas
+
 Tras completar las 10 ejecuciones, el sistema procesó un total de **135,109** registros exitosamente, reflejados en la tabla `tbb_personas`.
 
 ![Contador Final](media/image%20copy%2011.png)
-*Figura 2: Verificación final del volumen de datos en MySQL Workbench.*
+_Figura 2: Verificación final del volumen de datos en MySQL Workbench._

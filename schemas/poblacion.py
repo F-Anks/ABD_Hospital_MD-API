@@ -27,3 +27,5 @@ class PoblarRequest(BaseModel):
 
 class PoblarResponse(BaseModel):
     mensaje: str
+    ip: Optional[str] = None
+    fecha_hora: Optional[str] = None
