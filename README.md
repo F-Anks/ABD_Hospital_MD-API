@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md (Raíz)
 - **Descripción del archivo:** Documentación general del proyecto FastAPI y Stored Procedures para población volumétrica de datos biográficos y médicos.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:*Angel de Jesus Baños Telles* 
+- **Adaptado por:** Angel de Jesus Baños Telles, Al Farias Leyva, Jesus Alejandro Artiaga, Francisco Garcia Garcia
 - **Supervisado por:** 
 =============================================================================
 
@@ -307,8 +307,8 @@ A continuación se presentan las 10 pruebas preconfiguradas. Copia y pega cada b
 | Rol              | Nombre                     |
 |------------------|----------------------------|
 | **Creado por**       | Agente AI Antigravity      |
-| **Adaptado por**     |                            |
-| **Supervisado por**  |                            |
+| **Adaptado por**     | Angel de Jesus Baños Tellez, Al Farias Leyva, Jesus Alejandro Artiaga, Francisco Garcia Garcia |
+| **Supervisado por**  | Angel de Jesus Baños Tellez |
 
 ---
 

@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md
 - **Descripción del archivo:** Documentación de los Procedimientos Almacenados que ejecutan la lógica de negocio del hospital.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** 
+- **Adaptado por:** Angel de Jesus Baños Telles
 - **Supervisado por:** 
 =============================================================================
 
