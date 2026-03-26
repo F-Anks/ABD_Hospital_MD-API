@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md
 - **Descripción del archivo:** Documentación general del módulo de configuración que gestiona la conexión a la base de datos MySQL.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** 
+- **Adaptado por:** Angel de Jesus Baños Tellez
 - **Supervisado por:** 
 =============================================================================
 

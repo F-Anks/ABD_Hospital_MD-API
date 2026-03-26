@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md
 - **Descripción del archivo:** Documentación de las funciones SQL reutilizables para generación de datos.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** 
+- **Adaptado por:** Angel de Jesus Baños Tellez
 - **Supervisado por:** 
 =============================================================================
 

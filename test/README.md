@@ -1,3 +1,13 @@
+# Carpeta de Pruebas y Dashboard (test)
+
+=============================================================================
+- **Nombre del archivo:** README.md
+- **Descripción del archivo:** Documentación heredada sobre las métricas del dashboard analítico.
+- **Creado por:** Agente AI Antigravity
+- **Adaptado por:** Angel de Jesus Baños Tellez
+- **Supervisado por:** 
+=============================================================================
+
 # 🏥 ABD Hospital MD API
 
 API para la gestión y análisis de datos médicos hospitalarios.

@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md
 - **Descripción del archivo:** Documentación general del módulo de Scripts y Procedimientos Almacenados de la Base de Datos.
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** 
+- **Adaptado por:** Angel de Jesus Baños Tellez
 - **Supervisado por:** 
 =============================================================================
 
