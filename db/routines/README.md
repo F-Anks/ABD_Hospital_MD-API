@@ -4,7 +4,7 @@
 - **Nombre del archivo:** README.md
 - **Descripción del archivo:** Documentación general del módulo de rutinas SQL (Stored Procedures y Functions).
 - **Creado por:** Agente AI Antigravity
-- **Adaptado por:** Angel de Jesus Baños Telles
+- **Adaptado por:** Angel de Jesus Baños Tellez
 - **Supervisado por:** 
 =============================================================================
 
